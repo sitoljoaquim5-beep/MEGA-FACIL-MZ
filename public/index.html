@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#e60000">
+<title>MEGA FÁCIL MZ | Compra de Megas Vodacom</title>
+<style>
+:root{
+ --green:#e60000;--dark:#a90000;--yellow:#ffffff;
+ --bg:#f3f7f5;--white:#fff;--text:#17342b;
+ --muted:#71847b;--border:#e2ece7;--shadow:0 8px 28px #12352b12
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:Arial,sans-serif;color:var(--text)}
+button,input,select{font:inherit}
+button{cursor:pointer}
+header{background:linear-gradient(120deg,#075532,#0b9655);color:white}
+.top{max-width:1150px;margin:auto;padding:17px 20px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.logo{font-size:22px;font-weight:900;letter-spacing:.3px}
+.logo span{color:var(--yellow)}
+.top small{display:block;font-size:11px;font-weight:normal;margin-top:4px;color:#d9f5e6}
+.status{font-size:12px;background:#ffffff20;padding:9px 12px;border-radius:30px}
+.hero{max-width:1150px;margin:auto;padding:48px 20px 55px;display:grid;grid-template-columns:1.3fr .7fr;align-items:center;gap:25px}
+.hero h1{font-size:clamp(30px,5vw,49px);line-height:1.08;margin:0 0 15px}
+.hero p{font-size:16px;line-height:1.7;color:#e0f5e9;max-width:570px}
+.hero-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.btn{border:0;border-radius:12px;padding:13px 18px;font-weight:bold}
+.btn-yellow{background:var(--yellow);color:#17342b}
+.btn-light{background:white;color:var(--dark)}
+.hero-card{background:#ffffff16;border:1px solid #ffffff35;border-radius:22px;padding:25px;text-align:center}
+.hero-card .big{font-size:48px}
+.hero-card h3{margin:10px 0}
+.hero-card p{font-size:13px;margin:5px 0}
+main{max-width:1150px;margin:30px auto;padding:0 18px}
+.section-title{display:flex;align-items:end;justify-content:space-between;gap:10px;margin:30px 0 17px}
+.section-title h2{margin:0;font-size:23px}
+.section-title p{margin:6px 0 0;color:var(--muted);font-size:13px}
+.categories{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:20px}
+.cat{border:1px solid var(--border);background:white;color:var(--text);padding:11px 16px;border-radius:30px;font-weight:bold;font-size:13px}
+.cat.active{background:var(--green);color:white;border-color:var(--green)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.card{background:white;border:1px solid var(--border);border-radius:17px;padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;min-height:190px}
+.badge{font-size:10px;font-weight:bold;color:var(--green);background:#e7f6ed;padding:6px 9px;border-radius:20px;align-self:flex-start}
+.amount{font-size:25px;font-weight:900;margin:16px 0 5px}
+.card .valid{font-size:12px;color:var(--muted);margin-bottom:15px}
+.price{font-size:20px;font-weight:900;color:var(--green);margin-top:auto;margin-bottom:12px}
+.buy{width:100%;border:0;border-radius:10px;background:var(--green);color:white;padding:11px;font-weight:bold}
+.buy:active,.btn:active{transform:scale(.98)}
+.panel{background:white;border:1px solid var(--border);border-radius:18px;padding:22px;margin:25px 0;box-shadow:var(--shadow)}
+.track-row{display:flex;gap:9px;margin-top:14px}
+.track-row input{flex:1;min-width:0}
+input,select{width:100%;padding:13px;border:1px solid #d8e3dd;border-radius:10px;background:white;outline:none}
+input:focus,select:focus{border-color:var(--green)}
+.track-result{margin-top:12px;font-size:14px;line-height:1.6}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.info{background:#f6faf8;border:1px solid var(--border);padding:17px;border-radius:13px}
+.info b{display:block;margin:8px 0}
+.info p{font-size:13px;color:var(--muted);line-height:1.5;margin:0}
+footer{background:#073d29;color:#d7eee2;padding:27px 18px;text-align:center;font-size:12px;line-height:1.8;margin-top:45px}
+footer b{color:white}
+.modal{display:none;position:fixed;inset:0;background:#071e16b8;z-index:20;padding:15px;overflow:auto;align-items:center;justify-content:center}
+.modal.show{display:flex}
+.modal-box{background:white;width:min(480px,100%);border-radius:19px;padding:23px;position:relative;margin:auto}
+.close{position:absolute;right:15px;top:12px;border:0;background:#edf3ef;border-radius:50%;width:34px;height:34px;font-size:20px}
+.modal h2{margin:3px 35px 8px 0}
+.modal-desc{font-size:13px;color:var(--muted);line-height:1.5}
+.field{margin:14px 0}
+.field label{display:block;font-size:13px;font-weight:bold;margin-bottom:7px}
+.payment-box{background:#f1f8f4;border:1px solid var(--border);padding:13px;border-radius:12px;font-size:13px;line-height:1.8;margin-top:13px}
+.submit{width:100%;padding:14px;border:0;border-radius:11px;background:var(--green);color:white;font-weight:bold;margin-top:10px}
+.notice{font-size:12px;color:var(--muted);line-height:1.6;margin-top:12px}
+.success{background:#e8f8ee;border:1px solid #bce7ca;border-radius:12px;padding:15px;line-height:1.7;font-size:14px}
+.chat-toggle{position:fixed;right:18px;bottom:18px;width:60px;height:60px;border:0;border-radius:50%;background:var(--green);color:white;font-size:25px;box-shadow:0 5px 20px #0003;z-index:30}
+.chatbox{display:none;position:fixed;right:15px;bottom:90px;width:min(370px,calc(100% - 30px));height:480px;max-height:65vh;background:white;border-radius:17px;box-shadow:0 8px 35px #0003;z-index:30;overflow:hidden;flex-direction:column}
+.chatbox.show{display:flex}
+.chathead{background:var(--green);color:white;padding:15px;font-weight:bold}
+.chathead small{display:block;font-size:11px;font-weight:normal;margin-top:4px}
+.messages{padding:13px;overflow:auto;flex:1;background:#f3f7f5}
+.msg{padding:11px 12px;margin:9px 0;border-radius:12px;max-width:90%;font-size:13px;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}
+.msg.bot{background:white;border:1px solid var(--border)}
+.msg.user{background:#d5f5df;margin-left:auto}
+.chatquick{display:flex;gap:5px;padding:8px;flex-wrap:wrap}
+.chatquick button{border:1px solid var(--border);background:white;border-radius:20px;padding:7px 10px;font-size:11px}
+.chatform{display:flex;gap:7px;padding:10px;border-top:1px solid var(--border)}
+.chatform input{padding:10px}
+.chatform button{border:0;background:var(--green);color:white;border-radius:9px;padding:0 13px}
+.empty{grid-column:1/-1;background:white;padding:25px;border-radius:12px;color:var(--muted);text-align:center}
+@media(max-width:850px){.grid{grid-template-columns:repeat(3,1fr)}.hero{grid-template-columns:1fr}.hero-card{display:none}}
+@media(max-width:600px){
+ .top{padding:14px}.logo{font-size:19px}.status{font-size:10px}
+ .hero{padding:35px 18px 40px}.hero h1{font-size:34px}
+ main{padding:0 13px;margin-top:22px}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .card{padding:13px;min-height:175px}.amount{font-size:21px}
+ .price{font-size:18px}.section-title h2{font-size:20px}
+ .info-grid{grid-template-columns:1fr}
+ .track-row{flex-direction:column}
+}
+
+/* ===== NOVA IDENTIDADE MEGA FÁCIL MZ ===== */
+
+header {
+ background:linear-gradient(130deg,#a90000 0%,#e60000 55%,#ff3030 100%);
+}
+
+.top {
+ padding-top:20px;
+ padding-bottom:20px;
+}
+
+.logo {
+ display:flex;
+ align-items:center;
+ flex-wrap:wrap;
+ gap:5px;
+ font-size:23px;
+ letter-spacing:.4px;
+}
+
+.logo:before {
+ content:"M";
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ width:43px;
+ height:43px;
+ border-radius:50%;
+ background:white;
+ color:#e60000;
+ font-size:25px;
+ font-weight:900;
+ margin-right:7px;
+ box-shadow:0 3px 12px #0003;
+}
+
+.logo span {
+ color:white;
+ background:#a90000;
+ border-radius:7px;
+ padding:3px 7px;
+}
+
+.logo small {
+ flex-basis:100%;
+ margin-left:55px;
+ color:#ffe0e0;
+ letter-spacing:1.2px;
+}
+
+.status {
+ background:#ffffff25;
+ border:1px solid #ffffff45;
+}
+
+.hero {
+ padding-top:55px;
+ padding-bottom:65px;
+}
+
+.hero h1 {
+ font-weight:900;
+ letter-spacing:-1.2px;
+}
+
+.btn-yellow {
+ background:white;
+ color:#d00000;
+}
+
+.btn-yellow:hover {
+ background:#ffe5e5;
+}
+
+.btn-light {
+ color:#c00000;
+ font-weight:800;
+}
+
+.cat {
+ transition:.2s;
+}
+
+.cat.active {
+ background:#e60000;
+ border-color:#e60000;
+ box-shadow:0 4px 12px #e6000030;
+}
+
+.card {
+ border-radius:18px;
+ transition:transform .2s,box-shadow .2s;
+}
+
+.card:hover {
+ transform:translateY(-4px);
+ box-shadow:0 12px 30px #e6000018;
+}
+
+.badge {
+ color:#c00000;
+ background:#ffe9e9;
+}
+
+.buy,.submit {
+ background:linear-gradient(110deg,#c90000,#f00000);
+ box-shadow:0 4px 12px #e6000025;
+}
+
+.buy:hover,.submit:hover {
+ background:#a90000;
+}
+
+.price {
+ color:#d00000;
+}
+
+input:focus,select:focus,textarea:focus {
+ border-color:#e60000;
+ box-shadow:0 0 0 3px #e6000012;
+}
+
+.payment-box {
+ background:#fff5f5;
+ border-color:#ffd5d5;
+}
+
+.success {
+ background:#fff1f1;
+ border-color:#ffcaca;
+}
+
+.chat-toggle,.chathead {
+ background:#e60000;
+}
+
+.msg.user {
+ background:#ffe1e1;
+}
+
+.chatform button {
+ background:#e60000;
+}
+
+footer {
+ background:#790000;
+}
+
+.panel {
+ border-radius:18px;
+}
+
+@media(max-width:600px) {
+ .logo {
+  font-size:19px;
+ }
+
+ .logo:before {
+  width:37px;
+  height:37px;
+  font-size:22px;
+ }
+
+ .logo small {
+  margin-left:49px;
+  font-size:9px;
+ }
+
+ .hero {
+  background:transparent;
+ }
+}
+
+</style>
+</head>
+<body>
+
+<header>
+ <div class="top">
+  <div class="logo">MEGA FÁCIL <span>MZ</span><small>VENDA DE MEGAS • REDE VODACOM</small></div>
+  <div class="status">🟢 Serviço disponível</div>
+ </div>
+ <section class="hero">
+  <div>
+   <h1>Os teus megas,<br>de forma fácil!</h1>
+   <p>Escolhe o teu pacote Vodacom, faz o pagamento e recebe os teus megas depois da confirmação.</p>
+   <div class="hero-buttons">
+    <button class="btn btn-yellow" onclick="document.getElementById('pacotes').scrollIntoView({behavior:'smooth'})">📦 Ver pacotes</button>
+    <button class="btn btn-light" onclick="toggleChat(true)">💬 Falar com assistente</button>
+   </div>
+  </div>
+  <div class="hero-card">
+   <div class="big">📱</div>
+   <h3>Compra simples e segura</h3>
+   <p>Escolhe • Paga • Aguarda a confirmação</p>
+   <p>Atendimento MEGA FÁCIL MZ</p>
+  </div>
+ </section>
+</header>
+
+<main>
+ <section id="pacotes">
+  <div class="section-title">
+   <div><h2>📦 Os nossos pacotes</h2><p>Escolhe a quantidade de megas que pretendes.</p></div>
+   <b id="packageCount" style="color:var(--green);font-size:13px">A carregar...</b>
+  </div>
+  <div class="categories" id="categories">
+   <button class="cat active" data-cat="TODOS">Todos</button>
+   <button class="cat" data-cat="DIÁRIO">Diários</button>
+   <button class="cat" data-cat="SEMANAL">Semanais</button>
+   <button class="cat" data-cat="MENSAL">Mensais</button>
+   <button class="cat" data-cat="DIAMANTE">Diamante</button>
+  </div>
+  <div class="grid" id="packages"><div class="empty">A carregar pacotes...</div></div>
+ </section>
+
+ <section class="panel" id="acompanhar">
+  <h2 style="margin:0">🔎 Acompanhar encomenda</h2>
+  <p class="modal-desc">Introduz o código que recebeste quando fizeste a encomenda.</p>
+  <div class="track-row">
+   <input id="trackCode" placeholder="Ex.: MF-12345678-ABCD">
+   <button class="btn" style="background:var(--green);color:white" onclick="trackOrder()">Consultar</button>
+  </div>
+  <div id="trackResult" class="track-result"></div>
+ </section>
+
+ <section>
+  <div class="section-title"><div><h2>Como funciona?</h2><p>Três passos para receberes os teus megas.</p></div></div>
+  <div class="info-grid">
+   <div class="info"><div style="font-size:25px">🛒</div><b>1. Escolhe o pacote</b><p>Encontra o pacote que combina contigo e indica o número Vodacom de destino.</p></div>
+   <div class="info"><div style="font-size:25px">💳</div><b>2. Faz o pagamento</b><p>Paga pelo M-Pesa ou e-Mola e envia o comprovativo.</p></div>
+   <div class="info"><div style="font-size:25px">📲</div><b>3. Recebe os megas</b><p>Depois da verificação do pagamento, a equipa fará a transferência manual dos megas.</p></div>
+  </div>
+ </section>
+</main>
+
+<footer>
+ <b>MEGA FÁCIL MZ</b><br>
+ Venda de megas Vodacom Moçambique<br>
+ Pagamentos por M-Pesa e e-Mola.<br>
+ © 2026 MEGA FÁCIL MZ. Venda independente de megas para a rede Vodacom.
+</footer>
+
+<div class="modal" id="orderModal">
+ <div class="modal-box">
+  <button class="close" onclick="closeOrder()">×</button>
+  <div id="orderContent">
+   <h2>🛒 Fazer encomenda</h2>
+   <p class="modal-desc" id="selectedPackage">Pacote seleccionado</p>
+   <form id="orderForm">
+    <div class="field">
+     <label>Número Vodacom que vai receber os megas</label>
+     <input id="phone" inputmode="numeric" maxlength="9" placeholder="84XXXXXXX" required>
+    </div>
+    <div class="field">
+     <label>Forma de pagamento</label>
+     <select id="paymentMethod" required>
+      <option value="">Selecciona o pagamento</option>
+      <option value="M-Pesa">M-Pesa</option>
+      <option value="e-Mola">e-Mola</option>
+     </select>
+    </div>
+    <button class="submit" type="submit">Confirmar encomenda</button>
+   </form>
+   <div class="notice">⚠️ A encomenda só será aprovada depois de a equipa confirmar que o pagamento entrou. Nunca forneças PIN, senha ou código OTP.</div>
+  </div>
+ </div>
+</div>
+
+<button class="chat-toggle" onclick="toggleChat()">💬</button>
+<div class="chatbox" id="chatbox">
+ <div class="chathead">💬 Assistente MEGA FÁCIL MZ <small>Atendimento automático</small></div>
+ <div class="messages" id="messages">
+  <div class="msg bot">👋 Olá! Bem-vindo ao MEGA FÁCIL MZ.\nEscreve MEGA para consultar os pacotes, PAGAMENTO para ver as formas de pagamento ou AJUDA para assistência.</div>
+ </div>
+ <div class="chatquick">
+  <button onclick="sendQuick('MEGA')">📦 MEGA</button>
+  <button onclick="sendQuick('PAGAMENTO')">💳 PAGAMENTO</button>
+  <button onclick="sendQuick('AJUDA')">❓ AJUDA</button>
+ </div>
+ <form class="chatform" id="chatForm">
+  <input id="chatInput" placeholder="Escreve uma mensagem..." autocomplete="off">
+  <button type="submit">➤</button>
+ </form>
+</div>
+
+<script>
+let allPackages=[];
+let selectedPackage=null;
+let currentCategory='TODOS';
+
+const packagesEl=document.getElementById('packages');
+const countEl=document.getElementById('packageCount');
+
+function formatAmount(mb){
+ return mb>=1024 ? (mb/1024).toFixed(mb%1024===0?0:1)+' GB' : mb+' MB';
+}
+function escapeHTML(value){
+ return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+async function loadPackages(){
+ try{
+  const r=await fetch('/api/packages');
+  if(!r.ok) throw new Error('Falha ao carregar');
+  allPackages=await r.json();
+  if(!Array.isArray(allPackages)) throw new Error('Resposta inválida');
+  countEl.textContent=allPackages.length+' pacotes';
+  renderPackages();
+ }catch(e){
+  packagesEl.innerHTML='<div class="empty">Não foi possível carregar os pacotes. Actualiza a página.</div>';
+  countEl.textContent='Indisponível';
+ }
+}
+function renderPackages(){
+ const list=currentCategory==='TODOS'?allPackages:allPackages.filter(p=>p.category===currentCategory);
+ if(!list.length){
+  packagesEl.innerHTML='<div class="empty">Não existem pacotes disponíveis nesta categoria.</div>';
+  return;
+ }
+ packagesEl.innerHTML=list.map(p=>{
+  const validity=p.validityDays===1?'1 dia':p.validityDays+' dias';
+  return `<article class="card">
+   <span class="badge">${escapeHTML(p.category)}</span>
+   <div class="amount">${formatAmount(Number(p.megabytes))}</div>
+   <div class="valid">⏱ Validade: ${validity}</div>
+   <div class="price">${Number(p.price)} MT</div>
+   <button class="buy" onclick="openOrder('${escapeHTML(p.id)}')">Comprar agora</button>
+  </article>`;
+ }).join('');
+}
+document.getElementById('categories').addEventListener('click',e=>{
+ const b=e.target.closest('button[data-cat]');
+ if(!b)return;
+ currentCategory=b.dataset.cat;
+ document.querySelectorAll('.cat').forEach(x=>x.classList.toggle('active',x===b));
+ renderPackages();
+});
+function openOrder(id){
+ selectedPackage=allPackages.find(p=>p.id===id);
+ if(!selectedPackage)return;
+ document.getElementById('selectedPackage').textContent=
+  selectedPackage.name+' — '+selectedPackage.price+' MT';
+ document.getElementById('orderContent').innerHTML=`
+  <h2>🛒 Fazer encomenda</h2>
+  <p class="modal-desc">${escapeHTML(selectedPackage.name)} — ${selectedPackage.price} MT</p>
+  <form id="orderForm">
+   <div class="field"><label>Número Vodacom que vai receber os megas</label><input id="phone" inputmode="numeric" maxlength="9" placeholder="84XXXXXXX" required></div>
+   <div class="field"><label>Forma de pagamento</label><select id="paymentMethod" required><option value="">Selecciona o pagamento</option><option value="M-Pesa">M-Pesa</option><option value="e-Mola">e-Mola</option></select></div>
+   
+   <button class="submit" type="submit">Confirmar encomenda</button>
+  </form>
+  <div class="notice">⚠️ O pagamento será verificado pela equipa antes da entrega. Nunca forneças PIN, senha ou código OTP.</div>`;
+ document.getElementById('orderModal').classList.add('show');
+ document.getElementById('orderForm').addEventListener('submit',submitOrder);
+}
+function closeOrder(){document.getElementById('orderModal').classList.remove('show')}
+document.getElementById('orderModal').addEventListener('click',e=>{if(e.target.id==='orderModal')closeOrder()});
+
+async function submitOrder(e){
+ e.preventDefault();
+ const phone=document.getElementById('phone').value.trim();
+ const paymentMethod=document.getElementById('paymentMethod').value;
+ if(!/^(8[234567]|9[0-9])[0-9]{7}$/.test(phone)){
+  alert('Introduz um número moçambicano válido com 9 dígitos.');
+  return;
+ }
+ const btn=e.target.querySelector('button[type=submit]');
+ btn.disabled=true;btn.textContent='A registar...';
+ try{
+  const r=await fetch('/api/orders',{
+   method:'POST',headers:{'Content-Type':'application/json'},
+   body:JSON.stringify({packageId:selectedPackage.id,phone,paymentMethod})
+  });
+  const data=await r.json();
+  if(!r.ok)throw new Error(data.error||'Não foi possível registar a encomenda.');
+  const method=paymentMethod==='M-Pesa'
+   ? '<b>M-Pesa</b><br>Número: 848737335<br>Titular: ISABEL FABIAO'
+   : '<b>e-Mola</b><br>Número: 870737473<br>Titular: JOAQUIM SÉRGIO SITOL';
+  document.getElementById('orderContent').innerHTML=`
+   <h2>✅ Encomenda registada!</h2>
+   <div class="success">
+    <b>O teu código:</b><br><strong style="font-size:19px">${escapeHTML(data.order.code)}</strong><br>
+    Guarda este código para acompanhar a encomenda.
+   </div>
+   <div class="payment-box">
+    <b>Agora faz o pagamento de ${selectedPackage.price} MT:</b><br><br>
+    ${method}
+   </div>
+   <p class="notice">Depois de pagares, envia uma imagem do comprovativo ou cola a mensagem SMS de confirmação. O pagamento será verificado pela equipa antes da entrega.</p>
+
+   <form id="proofForm" onsubmit="submitProof(event,'${escapeHTML(data.order.code)}')">
+    <div class="field">
+     <label>🖼️ Comprovativo em imagem (opcional)</label>
+     <input id="proofImage" type="file" accept="image/jpeg,image/png,image/webp">
+     <small>JPG, PNG ou WebP. Máximo 4 MB.</small>
+    </div>
+    <div class="field">
+     <label>📩 Ou cola a mensagem SMS de confirmação</label>
+     <textarea id="proofSms" rows="5" maxlength="5000" placeholder="Cola aqui a mensagem recebida do M-Pesa ou e-Mola..."></textarea>
+    </div>
+    <button class="submit" type="submit">Enviar comprovativo</button>
+   </form>
+   <div id="proofMessage" class="notice">Podes enviar uma imagem, uma mensagem SMS ou ambos.</div>
+   <button class="submit" onclick="closeOrder();document.getElementById('trackCode').value='${escapeHTML(data.order.code)}';trackOrder();document.getElementById('acompanhar').scrollIntoView({behavior:'smooth'})">Acompanhar encomenda</button>`;
+ }catch(err){
+  alert(err.message);
+  btn.disabled=false;btn.textContent='Confirmar encomenda';
+ }
+}
+
+async function submitProof(e, code) {
+ e.preventDefault();
+
+ const imageInput = document.getElementById('proofImage');
+ const smsText = document.getElementById('proofSms').value.trim();
+ const file = imageInput.files[0];
+ const message = document.getElementById('proofMessage');
+ const button = e.target.querySelector('button[type=submit]');
+
+ if (!file && !smsText) {
+  alert('Escolhe uma imagem ou cola a mensagem SMS de confirmação.');
+  return;
+ }
+
+ if (file && file.size > 4 * 1024 * 1024) {
+  alert('A imagem deve ter no máximo 4 MB.');
+  return;
+ }
+
+ let imageData = '';
+
+ if (file) {
+  if (!['image/jpeg','image/png','image/webp'].includes(file.type)) {
+   alert('Formato inválido. Usa JPG, PNG ou WebP.');
+   return;
+  }
+
+  imageData = await new Promise((resolve, reject) => {
+   const reader = new FileReader();
+   reader.onload = () => resolve(reader.result);
+   reader.onerror = () => reject(new Error('Não foi possível ler a imagem.'));
+   reader.readAsDataURL(file);
+  });
+ }
+
+ button.disabled = true;
+ button.textContent = 'A enviar comprovativo...';
+
+ try {
+  const response = await fetch('/api/orders/' + encodeURIComponent(code) + '/proof', {
+   method: 'POST',
+   headers: {'Content-Type':'application/json'},
+   body: JSON.stringify({imageData, smsText})
+  });
+
+  const data = await response.json();
+  if (!response.ok) throw new Error(data.error || 'Erro ao enviar comprovativo.');
+
+  message.textContent = '✅ ' + data.message;
+  button.textContent = 'Comprovativo enviado';
+ } catch (error) {
+  alert(error.message);
+  button.disabled = false;
+  button.textContent = 'Enviar comprovativo';
+ }
+}
+
+async function trackOrder(){
+ const code=document.getElementById('trackCode').value.trim();
+ const result=document.getElementById('trackResult');
+ if(!code){result.textContent='Introduz o código da encomenda.';return}
+ result.textContent='A consultar...';
+ try{
+  const r=await fetch('/api/orders/'+encodeURIComponent(code));
+  const data=await r.json();
+  if(!r.ok)throw new Error(data.error||'Encomenda não encontrada.');
+  const statuses={
+   aguardando_pagamento:'⏳ A aguardar confirmação do pagamento',
+   pagamento_confirmado:'✅ Pagamento confirmado. A preparar entrega',
+   megas_enviados:'🎉 Megas enviados com sucesso',
+   cancelado:'❌ Encomenda cancelada'
+  };
+  result.innerHTML='<div class="success"><b>'+escapeHTML(data.code)+'</b><br>'+
+   escapeHTML(data.packageName)+'<br>'+escapeHTML(statuses[data.status]||data.status)+'</div>';
+ }catch(err){result.textContent=err.message}
+}
+function toggleChat(force){
+ const box=document.getElementById('chatbox');
+ if(force===true)box.classList.add('show');
+ else box.classList.toggle('show');
+}
+const messages=document.getElementById('messages');
+function addChatMessage(text,type){
+ const d=document.createElement('div');
+ d.className='msg '+type;
+ d.textContent=String(text).replace(/\\n/g,'\n');
+ messages.appendChild(d);messages.scrollTop=messages.scrollHeight;
+}
+async function sendMessage(text){
+ if(!text.trim())return;
+ addChatMessage(text,'user');
+ document.getElementById('chatInput').value='';
+ try{
+  const r=await fetch('/api/chat',{
+   method:'POST',headers:{'Content-Type':'application/json'},
+   body:JSON.stringify({message:text})
+  });
+  const data=await r.json();
+  addChatMessage(data.reply||'Não foi possível obter resposta.','bot');
+ }catch(e){addChatMessage('Não foi possível contactar o servidor. Tenta novamente.','bot')}
+}
+document.getElementById('chatForm').addEventListener('submit',e=>{
+ e.preventDefault();sendMessage(document.getElementById('chatInput').value);
+});
+function sendQuick(text){sendMessage(text)}
+loadPackages();
+</script>
+</body>
+</html>

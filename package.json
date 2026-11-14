@@ -1,0 +1,13 @@
+{
+  "name": "mega-facil-mz",
+  "version": "1.0.0",
+  "description": "Aplicativo de venda de megas Vodacom",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}

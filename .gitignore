@@ -1,0 +1,8 @@
+node_modules/
+.env
+database/data.json
+database/proofs/
+logs/
+backups/
+*.log
+.DS_Store

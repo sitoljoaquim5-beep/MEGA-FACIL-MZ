@@ -1,0 +1,582 @@
+[
+  {
+    "id": "daily-1",
+    "name": "DIÁRIO 215 MB",
+    "megabytes": 215,
+    "price": 5,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.522Z"
+  },
+  {
+    "id": "daily-2",
+    "name": "DIÁRIO 400 MB",
+    "megabytes": 400,
+    "price": 9,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.524Z"
+  },
+  {
+    "id": "daily-3",
+    "name": "DIÁRIO 480 MB",
+    "megabytes": 480,
+    "price": 10,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.524Z"
+  },
+  {
+    "id": "daily-4",
+    "name": "DIÁRIO 600 MB",
+    "megabytes": 600,
+    "price": 14,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.524Z"
+  },
+  {
+    "id": "daily-5",
+    "name": "DIÁRIO 700 MB",
+    "megabytes": 700,
+    "price": 15,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.524Z"
+  },
+  {
+    "id": "daily-6",
+    "name": "DIÁRIO 1 GB",
+    "megabytes": 1024,
+    "price": 20,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.524Z"
+  },
+  {
+    "id": "daily-7",
+    "name": "DIÁRIO 1 GB",
+    "megabytes": 1024,
+    "price": 21,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.525Z"
+  },
+  {
+    "id": "daily-8",
+    "name": "DIÁRIO 1 GB",
+    "megabytes": 1024,
+    "price": 22,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.525Z"
+  },
+  {
+    "id": "daily-9",
+    "name": "DIÁRIO 1.099609375 GB",
+    "megabytes": 1126,
+    "price": 24,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.525Z"
+  },
+  {
+    "id": "daily-10",
+    "name": "DIÁRIO 1.2001953125 GB",
+    "megabytes": 1229,
+    "price": 25,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.525Z"
+  },
+  {
+    "id": "daily-11",
+    "name": "DIÁRIO 1.2998046875 GB",
+    "megabytes": 1331,
+    "price": 28,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.525Z"
+  },
+  {
+    "id": "daily-12",
+    "name": "DIÁRIO 1.400390625 GB",
+    "megabytes": 1434,
+    "price": 29,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.525Z"
+  },
+  {
+    "id": "daily-13",
+    "name": "DIÁRIO 1.400390625 GB",
+    "megabytes": 1434,
+    "price": 30,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.525Z"
+  },
+  {
+    "id": "daily-14",
+    "name": "DIÁRIO 1.5 GB",
+    "megabytes": 1536,
+    "price": 31,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.525Z"
+  },
+  {
+    "id": "daily-15",
+    "name": "DIÁRIO 1.5 GB",
+    "megabytes": 1536,
+    "price": 32,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.525Z"
+  },
+  {
+    "id": "daily-16",
+    "name": "DIÁRIO 1.5 GB",
+    "megabytes": 1536,
+    "price": 33,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.525Z"
+  },
+  {
+    "id": "daily-17",
+    "name": "DIÁRIO 1.599609375 GB",
+    "megabytes": 1638,
+    "price": 34,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.525Z"
+  },
+  {
+    "id": "daily-18",
+    "name": "DIÁRIO 1.599609375 GB",
+    "megabytes": 1638,
+    "price": 35,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.525Z"
+  },
+  {
+    "id": "daily-19",
+    "name": "DIÁRIO 1.7001953125 GB",
+    "megabytes": 1741,
+    "price": 37,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.525Z"
+  },
+  {
+    "id": "daily-20",
+    "name": "DIÁRIO 1.7001953125 GB",
+    "megabytes": 1741,
+    "price": 38,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.525Z"
+  },
+  {
+    "id": "daily-21",
+    "name": "DIÁRIO 1.7001953125 GB",
+    "megabytes": 1741,
+    "price": 39,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.525Z"
+  },
+  {
+    "id": "daily-22",
+    "name": "DIÁRIO 2 GB",
+    "megabytes": 2048,
+    "price": 40,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.525Z"
+  },
+  {
+    "id": "daily-23",
+    "name": "DIÁRIO 2 GB",
+    "megabytes": 2048,
+    "price": 41,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.525Z"
+  },
+  {
+    "id": "daily-24",
+    "name": "DIÁRIO 2 GB",
+    "megabytes": 2048,
+    "price": 42,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "daily-25",
+    "name": "DIÁRIO 2.099609375 GB",
+    "megabytes": 2150,
+    "price": 43,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "daily-26",
+    "name": "DIÁRIO 2.099609375 GB",
+    "megabytes": 2150,
+    "price": 45,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "daily-27",
+    "name": "DIÁRIO 2.099609375 GB",
+    "megabytes": 2150,
+    "price": 46,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "daily-28",
+    "name": "DIÁRIO 2.099609375 GB",
+    "megabytes": 2150,
+    "price": 48,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "daily-29",
+    "name": "DIÁRIO 2.2001953125 GB",
+    "megabytes": 2253,
+    "price": 49,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "daily-30",
+    "name": "DIÁRIO 2.2998046875 GB",
+    "megabytes": 2355,
+    "price": 50,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "daily-31",
+    "name": "DIÁRIO 3 GB",
+    "megabytes": 3072,
+    "price": 60,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "daily-32",
+    "name": "DIÁRIO 4 GB",
+    "megabytes": 4096,
+    "price": 80,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "daily-33",
+    "name": "DIÁRIO 5 GB",
+    "megabytes": 5120,
+    "price": 100,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "daily-34",
+    "name": "DIÁRIO 6 GB",
+    "megabytes": 6144,
+    "price": 120,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "daily-35",
+    "name": "DIÁRIO 7 GB",
+    "megabytes": 7168,
+    "price": 140,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "daily-36",
+    "name": "DIÁRIO 8 GB",
+    "megabytes": 8192,
+    "price": 160,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "daily-37",
+    "name": "DIÁRIO 9 GB",
+    "megabytes": 9216,
+    "price": 180,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "daily-38",
+    "name": "DIÁRIO 10 GB",
+    "megabytes": 10240,
+    "price": 200,
+    "category": "DIÁRIO",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "weekly-1",
+    "name": "SEMANAL 1 GB",
+    "megabytes": 1024,
+    "price": 47,
+    "category": "SEMANAL",
+    "validityDays": 7,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "weekly-2",
+    "name": "SEMANAL 2 GB",
+    "megabytes": 2048,
+    "price": 81,
+    "category": "SEMANAL",
+    "validityDays": 7,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "weekly-3",
+    "name": "SEMANAL 3 GB",
+    "megabytes": 3072,
+    "price": 95,
+    "category": "SEMANAL",
+    "validityDays": 7,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "weekly-4",
+    "name": "SEMANAL 5 GB",
+    "megabytes": 5120,
+    "price": 145,
+    "category": "SEMANAL",
+    "validityDays": 7,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "weekly-5",
+    "name": "SEMANAL 7 GB",
+    "megabytes": 7168,
+    "price": 188,
+    "category": "SEMANAL",
+    "validityDays": 7,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "weekly-6",
+    "name": "SEMANAL 10 GB",
+    "megabytes": 10240,
+    "price": 289,
+    "category": "SEMANAL",
+    "validityDays": 7,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "weekly-7",
+    "name": "SEMANAL 14 GB",
+    "megabytes": 14336,
+    "price": 391,
+    "category": "SEMANAL",
+    "validityDays": 7,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "monthly-1",
+    "name": "MENSAL 2 GB",
+    "megabytes": 2048,
+    "price": 96,
+    "category": "MENSAL",
+    "validityDays": 30,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "monthly-2",
+    "name": "MENSAL 3 GB",
+    "megabytes": 3072,
+    "price": 127,
+    "category": "MENSAL",
+    "validityDays": 30,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "monthly-3",
+    "name": "MENSAL 4 GB",
+    "megabytes": 4096,
+    "price": 149,
+    "category": "MENSAL",
+    "validityDays": 30,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "monthly-4",
+    "name": "MENSAL 5 GB",
+    "megabytes": 5120,
+    "price": 176,
+    "category": "MENSAL",
+    "validityDays": 30,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "monthly-5",
+    "name": "MENSAL 6 GB",
+    "megabytes": 6144,
+    "price": 192,
+    "category": "MENSAL",
+    "validityDays": 30,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "monthly-6",
+    "name": "MENSAL 10 GB",
+    "megabytes": 10240,
+    "price": 291,
+    "category": "MENSAL",
+    "validityDays": 30,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "monthly-7",
+    "name": "MENSAL 17 GB",
+    "megabytes": 17408,
+    "price": 487,
+    "category": "MENSAL",
+    "validityDays": 30,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "monthly-8",
+    "name": "MENSAL 35 GB",
+    "megabytes": 35840,
+    "price": 988,
+    "category": "MENSAL",
+    "validityDays": 30,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "monthly-9",
+    "name": "MENSAL 53 GB",
+    "megabytes": 54272,
+    "price": 1490,
+    "category": "MENSAL",
+    "validityDays": 30,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "monthly-10",
+    "name": "MENSAL 71 GB",
+    "megabytes": 72704,
+    "price": 1985,
+    "category": "MENSAL",
+    "validityDays": 30,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "monthly-11",
+    "name": "MENSAL 89 GB",
+    "megabytes": 91136,
+    "price": 2478,
+    "category": "MENSAL",
+    "validityDays": 30,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "diamond-1",
+    "name": "DIAMANTE 11 GB",
+    "megabytes": 11264,
+    "price": 450,
+    "category": "DIAMANTE",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  },
+  {
+    "id": "diamond-2",
+    "name": "DIAMANTE 24 GB",
+    "megabytes": 24576,
+    "price": 820,
+    "category": "DIAMANTE",
+    "validityDays": 1,
+    "active": true,
+    "createdAt": "2026-11-14T07:14:00.526Z"
+  }
+]

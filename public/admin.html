@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Administração | MEGA FÁCIL MZ</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#eef3f0;font-family:Arial,sans-serif;color:#17342b}
+header{background:#064b31;color:white;padding:18px}
+header h2{margin:0}
+main{max-width:1100px;margin:20px auto;padding:12px}
+.card{background:white;padding:18px;border-radius:12px;margin-bottom:16px;box-shadow:0 2px 8px #0001}
+input,select{padding:12px;border:1px solid #ccd8d1;border-radius:8px;width:100%;margin:6px 0;font-size:15px}
+button{background:#087b45;color:white;border:0;padding:11px 15px;border-radius:8px;margin:4px;cursor:pointer}
+button.secondary{background:#52675d}
+button.danger{background:#a52b2b}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.stat{background:#e4f2e9;padding:15px;border-radius:9px}
+.stat strong{font-size:25px;display:block;margin-top:8px}
+table{width:100%;border-collapse:collapse;min-width:650px}
+th,td{text-align:left;padding:10px;border-bottom:1px solid #e2e9e5;font-size:13px}
+.tablewrap{overflow-x:auto}
+.hidden{display:none}
+small{color:#64776d}
+#message{margin:10px 0;font-weight:bold}
+</style>
+</head>
+<body>
+<header>
+<h2>MEGA FÁCIL MZ</h2>
+<small style="color:#d6f1e1">Painel administrativo</small>
+</header>
+
+<main>
+<section id="login" class="card">
+<h3>Entrar no painel</h3>
+<input id="password" type="password" placeholder="Palavra-passe administrativa">
+<button onclick="login()">Entrar</button>
+<div id="loginMessage"></div>
+</section>
+
+<section id="panel" class="hidden">
+<div class="card">
+<button class="secondary" onclick="loadAll()">Actualizar dados</button>
+<button class="danger" onclick="logout()">Sair</button>
+<div id="message"></div>
+</div>
+
+<div class="card">
+<h3>Resumo das vendas</h3>
+<div class="grid">
+<div class="stat">Encomendas<strong id="total">0</strong></div>
+<div class="stat">Aguardando pagamento<strong id="pending">0</strong></div>
+<div class="stat">Pagamentos confirmados<strong id="paid">0</strong></div>
+<div class="stat">Megas enviados<strong id="delivered">0</strong></div>
+<div class="stat">Vendas confirmadas<strong id="revenue">0 MT</strong></div>
+</div>
+</div>
+
+<div class="card">
+<h3>Adicionar pacote Vodacom</h3>
+<input id="packName" placeholder="Nome do pacote (ex.: Pacote 500 MB)">
+<input id="packMB" type="number" min="1" placeholder="Quantidade em MB">
+<input id="packPrice" type="number" min="1" step="0.01" placeholder="Preço em MT">
+<button onclick="addPackage()">Guardar pacote</button>
+</div>
+
+<div class="card">
+<h3>Pacotes cadastrados</h3>
+<div class="tablewrap">
+<table>
+<thead><tr><th>Pacote</th><th>Megas</th><th>Preço</th><th>Estado</th><th>Acção</th></tr></thead>
+<tbody id="packages"></tbody>
+</table>
+</div>
+</div>
+
+<div class="card">
+<h3>Encomendas dos clientes</h3>
+<div class="tablewrap">
+<table>
+<thead>
+<tr><th>Código</th><th>Pacote</th><th>Telefone</th><th>Pagamento</th><th>Comprovativo</th><th>Estado</th><th>Acção</th></tr>
+</thead>
+<tbody id="orders"></tbody>
+</table>
+</div>
+</div>
+</section>
+</main>
+
+<script>
+let token = sessionStorage.getItem('megaAdminToken') || '';
+
+async function api(url, options = {}) {
+ const response = await fetch(url, {
+  ...options,
+  headers: {
+   'Content-Type':'application/json',
+   'Authorization':'Bearer ' + token,
+   ...(options.headers || {})
+  }
+ });
+ const data = await response.json();
+ if (!response.ok) throw new Error(data.error || 'Erro no pedido.');
+ return data;
+}
+
+async function login(){
+ const password = document.getElementById('password').value;
+ const msg = document.getElementById('loginMessage');
+
+ try{
+  const response = await fetch('/api/admin/login',{
+   method:'POST',
+   headers:{'Content-Type':'application/json'},
+   body:JSON.stringify({password})
+  });
+  const data = await response.json();
+  if(!response.ok) throw new Error(data.error);
+
+  token = data.token;
+  sessionStorage.setItem('megaAdminToken',token);
+  document.getElementById('login').classList.add('hidden');
+  document.getElementById('panel').classList.remove('hidden');
+  document.getElementById('password').value = '';
+  await loadAll();
+ }catch(e){
+  msg.textContent = e.message;
+ }
+}
+
+function statusName(status){
+ return ({
+  aguardando_pagamento:'Aguardando pagamento',
+  pagamento_confirmado:'Pagamento confirmado',
+  megas_enviados:'Megas enviados',
+  cancelado:'Cancelado'
+ })[status] || status;
+}
+
+async function loadAll(){
+ try{
+  const [stats, packages, orders] = await Promise.all([
+   api('/api/admin/dashboard'),
+   api('/api/admin/packages'),
+   api('/api/admin/orders')
+  ]);
+
+  document.getElementById('total').textContent = stats.total;
+  document.getElementById('pending').textContent = stats.pending;
+  document.getElementById('paid').textContent = stats.paid;
+  document.getElementById('delivered').textContent = stats.delivered;
+  document.getElementById('revenue').textContent = stats.revenue + ' MT';
+
+  document.getElementById('packages').innerHTML = packages.map(p => `
+   <tr>
+    <td>${escapeHTML(p.name)}</td>
+    <td>${p.megabytes} MB</td>
+    <td>${p.price} MT</td>
+    <td>${p.active ? 'Activo' : 'Inactivo'}</td>
+    <td><button class="secondary" onclick="togglePackage('${p.id}',${!p.active})">${p.active ? 'Desactivar' : 'Activar'}</button></td>
+   </tr>
+  `).join('') || '<tr><td colspan="5">Ainda não existem pacotes.</td></tr>';
+
+  document.getElementById('orders').innerHTML = orders.map(o => `
+   <tr>
+    <td>${escapeHTML(o.code)}</td>
+    <td>${escapeHTML(o.packageName)}<br>${o.price} MT</td>
+    <td>${escapeHTML(o.phone)}</td>
+    <td>${escapeHTML(o.paymentMethod)}</td>
+    <td>
+     ${o.proofImageData ? `<a href="${o.proofImageData}" target="_blank"><img src="${o.proofImageData}" alt="Comprovativo" style="width:90px;max-height:90px;object-fit:contain;border-radius:8px"></a>` : ''}
+     ${o.proofSms ? `<details><summary>Ver SMS</summary><div style="white-space:pre-wrap;max-width:260px;overflow-wrap:anywhere">${escapeHTML(o.proofSms)}</div></details>` : ''}
+     ${(!o.proofImageData && !o.proofSms) ? 'Ainda não enviado' : ''}
+    </td>
+    <td>${statusName(o.status)}</td>
+    <td>${orderButtons(o)}</td>
+   </tr>
+  `).join('') || '<tr><td colspan="7">Ainda não existem encomendas.</td></tr>';
+
+  document.getElementById('message').textContent = 'Dados actualizados.';
+ }catch(e){
+  document.getElementById('message').textContent = e.message;
+  if(e.message.includes('Sessão')) logout();
+ }
+}
+
+function orderButtons(o){
+ if(o.status === 'aguardando_pagamento'){
+  return `<button onclick="changeOrder('${o.id}','pagamento_confirmado')">Confirmar pagamento</button>`;
+ }
+ if(o.status === 'pagamento_confirmado'){
+  return `<button onclick="changeOrder('${o.id}','megas_enviados')">Marcar megas enviados</button>`;
+ }
+ return '—';
+}
+
+async function addPackage(){
+ try{
+  await api('/api/admin/packages',{
+   method:'POST',
+   body:JSON.stringify({
+    name:document.getElementById('packName').value,
+    megabytes:Number(document.getElementById('packMB').value),
+    price:Number(document.getElementById('packPrice').value)
+   })
+  });
+  document.getElementById('packName').value='';
+  document.getElementById('packMB').value='';
+  document.getElementById('packPrice').value='';
+  await loadAll();
+  alert('Pacote guardado com sucesso!');
+ }catch(e){alert(e.message);}
+}
+
+async function togglePackage(id,active){
+ try{
+  await api('/api/admin/packages/'+id,{
+   method:'PATCH',
+   body:JSON.stringify({active})
+  });
+  await loadAll();
+ }catch(e){alert(e.message);}
+}
+
+async function changeOrder(id,status){
+ let note = '';
+ if(status === 'pagamento_confirmado'){
+  if(!confirm('Já verificaste que o dinheiro entrou na conta?')) return;
+ }else if(status === 'megas_enviados'){
+  if(!confirm('Confirmas que transferiste os megas para o cliente?')) return;
+  note = 'Transferência manual confirmada pelo administrador.';
+ }
+
+ try{
+  await api('/api/admin/orders/'+id,{
+   method:'PATCH',
+   body:JSON.stringify({status,adminNote:note})
+  });
+  await loadAll();
+ }catch(e){alert(e.message);}
+}
+
+function escapeHTML(value){
+ return String(value ?? '').replace(/[&<>"']/g, c => ({
+  '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+ })[c]);
+}
+
+async function logout(){
+ try{
+  if(token) await api('/api/admin/logout',{method:'POST'});
+ }catch(e){}
+ token='';
+ sessionStorage.removeItem('megaAdminToken');
+ document.getElementById('panel').classList.add('hidden');
+ document.getElementById('login').classList.remove('hidden');
+}
+
+if(token){
+ document.getElementById('login').classList.add('hidden');
+ document.getElementById('panel').classList.remove('hidden');
+ loadAll();
+}
+</script>
+</body>
+</html>
